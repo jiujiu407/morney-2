@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
+    //<React.StrictMode>让你知道你的代码有那些错
   <React.StrictMode>
     <App />
   </React.StrictMode>,
