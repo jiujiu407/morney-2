@@ -10,11 +10,16 @@ import Tags from "./views/Tags";
 import Money from "./views/Money";
 import Statistics from "./views/Statistics";
 import NoMatch from "./views/NoMatch";
-//把标签放在页面的下面
+import styled from "styled-components";
+const AppWrapper = styled.div`
+color: #333;
+`
 
 class App extends React.Component {
     render() {
-        return (<Router>
+        return (
+            <AppWrapper>
+            <Router>
                 <Switch>
                     <Route path="/tags">
                         <Tags/>
@@ -32,7 +37,8 @@ class App extends React.Component {
                     <NoMatch />
                 </Route>
                 </Switch>
-        </Router>);
+        </Router>
+            </AppWrapper>);
     }
 }
 
