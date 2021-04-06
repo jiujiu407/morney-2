@@ -29,3 +29,8 @@ button{
   display: block;
   clear: both;
 }
+.oneLine{
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
