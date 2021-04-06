@@ -27,12 +27,16 @@ border-bottom: 1px solid #333;
 color: #666;
 margin-top: 8px;
 }
-`
+`;
+type Props = {
+    value:string[];
+    onChange:(selected:string[])=>void;
+      }
 
-const TagsSection:React.FC= (props)=>{
+const TagsSection:React.FC<Props>= (props)=>{
 
     const [tags, setTags] = useState<string[]>(['衣服','食物','住处','交通']);
-    const [selectedTags,setSelectedTags] = useState<string[]>([])
+    const selectedTags = props.value;
     const onAddTag = ()=>{
         const tagName = window.prompt('请输入要添加的标签名');
         if(tagName!== null){
@@ -43,9 +47,9 @@ const TagsSection:React.FC= (props)=>{
         const index = selectedTags.indexOf(tag);
         if(index >= 0){
             //如果tag已被选中，就复制所以没有被选中的tag，作为新的selectedTag
-            setSelectedTags(selectedTags.filter(t => t!== tag));
+            props.onChange(selectedTags.filter(t => t!== tag));
         }else{
-            setSelectedTags([...selectedTags,tag])
+            props.onChange([...selectedTags,tag])
         }
     };
     const getClass=(tag:string)=>selectedTags.indexOf(tag) >= 0 ? 'selected':'';
