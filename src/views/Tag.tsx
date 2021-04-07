@@ -5,6 +5,9 @@ import Layout from "components/Layout";
 import Icon from "../components/Icon";
 import {Button} from "../components/Button";
 import styled from "styled-components";
+import {Input} from "../components/Input";
+import {Center} from "../components/Center";
+import {Space} from "../components/Space";
 type Params = {
     id:string
 };
@@ -28,15 +31,14 @@ const Tag:React.FC=(props)=>{
                 <Icon />
             </Topbar>
             <div>
-                <label>
-                    <span>标签名</span>
-                    <input type="text" placeholder="标签名"
-                    />
-                </label>
+                <Input label="标签名" type="text" placeholder="标签名"></Input>
             </div>
-            <div>
+            <Center>
+                <Space/>
+                <Space/>
+                <Space/>
                 <Button>删除标签</Button>
-            </div>
+            </Center>
         </Layout>
     )
 }
