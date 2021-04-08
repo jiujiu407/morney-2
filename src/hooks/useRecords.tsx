@@ -1,0 +1,27 @@
+import {useEffect, useState} from "react";
+import {useUpdate} from "./useUpdate";
+
+type RecordItem = {
+    tagIds:number[];
+    note:string;
+    category: '+' |'-';
+    amount:number;
+    createdAt:string;//ISO 8601
+    updatedAt: string
+};
+//Omit不要部分选项
+type newRecordItem = Omit<RecordItem,'createdAt'>
+export const useRecords = ()=>{
+    const [records,setRecords] = useState<RecordItem[]>([]);
+    useEffect(()=>{
+        setRecords(JSON.parse(window.localStorage.getItem('records') || '[]'));
+    },[]);
+    useUpdate(()=>{
+        window.localStorage.setItem('records',JSON.stringify(records))
+    },[records]);
+    const addRecord =(newRecord:newRecordItem) =>{
+        const record ={...newRecord,createdAt:(new Date()).toISOString()};
+        setRecords([...records,record]);
+    };
+    return {records,addRecord};
+};
