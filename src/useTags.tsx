@@ -1,15 +1,25 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {createId} from "lib/creatId";
-const defaultTags = [
-    {id:createId(),name:'衣服'},
-    {id:createId(),name:'食物'},
-    {id:createId(),name:'住宿'},
-    {id:createId(),name:'出行'},
-]
+import {useUpdate} from "./hooks/useUpdate";
 //封装一个自定义Hook
 const useTags = () =>{
-    const [tags, setTags] = useState<{id:number;name:string}[]>(
-    defaultTags);
+    const [tags, setTags] = useState<{id:number;name:string}[]>([]);
+    //什么都不写，给一个空，然后进行第一次渲染
+    useEffect(()=>{
+        let localTags=JSON.parse(window.localStorage.getItem('tags')||'[]');
+        if(localTags.length === 0){
+            localTags =[
+                {id:createId(),name:'衣服'},
+                {id:createId(),name:'食物'},
+                {id:createId(),name:'住宿'},
+                {id:createId(),name:'出行'}
+            ];
+        }
+        setTags(localTags);
+    },[])
+    useUpdate(()=>{
+        window.localStorage.setItem('tags',JSON.stringify(tags))
+    },[tags])
     const findTag = (id:number) => tags.filter(tag =>tag.id ===id)[0];
     const findTagIndex = (id:number)=>{
         let result = -1;
@@ -27,7 +37,13 @@ const useTags = () =>{
     const deleteTag = (id:number)=>{
        // filter会创建一个新的数组，把不等于当前id的tag保留下来
        setTags(tags.filter(tag=>tag.id!==id))
-    }
-    return {tags, setTags,findTag,updateTag,findTagIndex,deleteTag};
+    };
+    const addTag = ()=>{
+        const tagName = window.prompt('请输入要添加的标签名');
+        if(tagName!== null){
+            setTags([...tags,{id:createId(),name:tagName}])
+        }
+    };
+    return {tags, addTag,setTags,findTag,updateTag,findTagIndex,deleteTag};
 };
 export {useTags}
