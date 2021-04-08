@@ -7,7 +7,6 @@ type RecordItem = {
     category: '+' |'-';
     amount:number;
     createdAt:string;//ISO 8601
-    updatedAt: string
 };
 //Omit不要部分选项
 type newRecordItem = Omit<RecordItem,'createdAt'>
