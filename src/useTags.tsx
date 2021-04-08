@@ -16,7 +16,7 @@ const useTags = () =>{
             ];
         }
         setTags(localTags);
-    },[])
+    },[]);//组件挂载时执行
     useUpdate(()=>{
         window.localStorage.setItem('tags',JSON.stringify(tags))
     },[tags])
@@ -40,7 +40,7 @@ const useTags = () =>{
     };
     const addTag = ()=>{
         const tagName = window.prompt('请输入要添加的标签名');
-        if(tagName!== null){
+        if(tagName!== null && tagName !==''){
             setTags([...tags,{id:createId(),name:tagName}])
         }
     };
