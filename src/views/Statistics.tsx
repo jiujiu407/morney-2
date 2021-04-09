@@ -15,6 +15,7 @@ background: white;
 font-size: 18px;
 line-height: 20px;
 padding: 10px 16px;
+align-items: center;
 > .note{
 margin-right: auto;
 margin-left: 16px;
