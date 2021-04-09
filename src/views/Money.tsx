@@ -23,7 +23,7 @@ const defaultFormData ={
 };
 function Money() {
     const [selected,setSelected] = useState(defaultFormData);
-    const {records,addRecord} = useRecords();
+    const {addRecord} = useRecords();
     //通过typeof获取一个值的类型
     //通过Partial来传一个新的类型，这个类型是之前类型的部分类型
     const onChange = (obj:Partial<typeof selected>)=>{
