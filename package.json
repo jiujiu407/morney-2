@@ -1,6 +1,7 @@
 {
   "name": "morney-1",
   "version": "0.1.0",
+  "homepage": "https://jiujiu407.github.io/morney-1/",
   "private": true,
   "dependencies": {
     "@babel/core": "7.12.3",

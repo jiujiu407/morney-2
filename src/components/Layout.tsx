@@ -7,7 +7,6 @@ display:flex;
 flex-direction: column;
 `;
 const Main = styled.div`
-border:1px solid green;
 flex-grow: 1;
 overflow: auto;
 `;

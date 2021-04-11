@@ -23,9 +23,9 @@ width: 24px;
 height: 24px;
 }
 &.selected{
-color: deeppink;
+color: #5790CF;
 .icon{
-fill: deeppink;
+fill: #5790CF;
 }
 }
 }
